@@ -1,7 +1,7 @@
 from http.client import HTTPException
 import requests
 from bs4 import BeautifulSoup
-from pokemon.repository import add_pokemon_bulk
+from pokemon.repository import add_pokemon_bulk, get_pokemon_data, get_pokemon_count
 
 def scrape_pokemon_data(db):
     url = "https://pokemondb.net"
@@ -54,3 +54,8 @@ def scrape_pokemon_data(db):
         raise Exception("unable to access pokemondb.net")
     
     add_pokemon_bulk(pokemons=pokemons, db=db)
+    
+async def get_pokemon(db, query_params):
+    pokemon = await get_pokemon_data(db, query_params)
+    pokemon_count = await get_pokemon_count(db, query_params)
+    return {"records": pokemon, "_metadata": {"total_records": pokemon_count, "page": query_params["page"], "limit": query_params["limit"]}}
