@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
-from database import get_db
+from ..database import get_db
 from typing import Optional
-from pokemon.service import get_pokemon
+from src.pokemon.service import get_pokemon
 
 router = APIRouter()
 

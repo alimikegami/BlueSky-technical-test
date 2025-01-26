@@ -1,11 +1,11 @@
-from database import get_db
-from pokemon.schemas import Pokemon
+from ..database import get_db
+from src.pokemon.schemas import Pokemon
 
 def add_pokemon_bulk(pokemons, db):
     cursor = db.cursor()
     insert_pokemon = ("INSERT INTO pokemon "
-            "(name, type_1, type_2, pokedex_id) "
-            "VALUES (%(name)s, %(type_1)s, %(type_2)s, %(pokedex_id)s)")
+            "(name, type_1, type_2, pokedex_id, created_at, updated_at) "
+            "VALUES (%(name)s, %(type_1)s, %(type_2)s, %(pokedex_id)s, %(created_at)s, %(updated_at)s)")
     cursor.executemany(insert_pokemon, pokemons)
     db.commit()
     cursor.close()

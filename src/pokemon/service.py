@@ -1,7 +1,8 @@
 from http.client import HTTPException
 import requests
 from bs4 import BeautifulSoup
-from pokemon.repository import add_pokemon_bulk, get_pokemon_data, get_pokemon_count
+from src.pokemon.repository import add_pokemon_bulk, get_pokemon_data, get_pokemon_count
+from datetime import datetime
 
 def scrape_pokemon_data(db):
     url = "https://pokemondb.net"
@@ -37,6 +38,8 @@ def scrape_pokemon_data(db):
                 pokemon = {
                     "name": name.get_text(),
                     "pokedex_id": pokedex_id.get_text(),
+                    "created_at": datetime.now().timestamp(),
+                    "updated_at": datetime.now().timestamp()
                 }
                 
                 if len(types) > 1:

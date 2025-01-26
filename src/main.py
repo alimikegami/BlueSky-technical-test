@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends
-from pokemon.service import scrape_pokemon_data, get_pokemon
-from database import get_db
-from pokemon.route import router as pokemon_router
+from src.pokemon.service import scrape_pokemon_data, get_pokemon
+from .database import get_db, migrate_tables
+from src.pokemon.route import router as pokemon_router
 
 app = FastAPI()
 app.include_router(pokemon_router)
@@ -12,6 +12,7 @@ app.include_router(pokemon_router)
 async def startup_event():
     for db in get_db():
         try:
+            migrate_tables(db)
             query_params = {
                 "name": None,
                 "type": None,
@@ -19,7 +20,8 @@ async def startup_event():
                 "page": 1
             }
             pokemon = await get_pokemon(db, query_params)
-            if len(pokemon) == 0:
+            print(pokemon['_metadata']['total_records'])
+            if pokemon['_metadata']['total_records'] == 0:
                 scrape_pokemon_data(db)
                 print("pokemon data has been scraped")
             else:
