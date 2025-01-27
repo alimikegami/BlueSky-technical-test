@@ -18,7 +18,7 @@ The following technologies are used in this project:
 - Docker
 ## API Documentation
 The API documentation can be accessed at `http://localhost:8001/docs`
-<br>
+
 ![API docs screenshot](./screenshots/api_docs.png)
 ## How The Project Works
 This project scrapes data from <a href="https://pokemondb.net/">pokemondb.net</a> using BeautifulSoup4. The scraping process serves as a database seeding mechanism for the API, which then serves Pokemon data from the local database.
@@ -28,5 +28,5 @@ The integration test written for this project cant be found in `tests` directory
 ```
 pytest
 ```
-<br>
+
 ![test screenshot](./screenshots/test.png)
