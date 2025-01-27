@@ -13,7 +13,7 @@ docker compose up -d
 Once executed, the API will be accessible at `http://localhost:8001`. The tables will be automatically created by the API.
 ## Tech Stacks
 The following technologies are used in this project:
-- Python (BeautifulSoup4, FastAPI, MySQL connector, dotenv, pytest)
+- Python (BeautifulSoup4, FastAPI, MySQL connector, python-dotenv, pytest)
 - MySQL
 - Docker
 ## Project Structure
