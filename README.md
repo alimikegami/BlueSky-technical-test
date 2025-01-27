@@ -48,6 +48,7 @@ The repository file contains the database interaction. The service file contains
 The API documentation can be accessed at `http://localhost:8001/docs`
 
 ![API docs screenshot](./screenshots/api_docs.png)
+![API response screenshot](./screenshots/api_response.png)
 ## How The Project Works
 This project scrapes data from <a href="https://pokemondb.net/">pokemondb.net</a> using BeautifulSoup4. The scraping process serves as a database seeding mechanism for the API, which then serves Pokemon data from the local database.
 ## Tests
