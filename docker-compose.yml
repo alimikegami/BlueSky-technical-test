@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:9.2.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: "pokemon"
+      MYSQL_ROOT_PASSWORD: "password"
+    ports:
+      - "3309:3306"
+    volumes:
+      - my_db:/var/lib/mysql
+    networks:
+      - app_network
+  be:
+    build:
+      context: .
+    restart: always
+    depends_on:
+      db:
+        condition: service_started
+    ports:
+      - "8001:8080"
+    environment:
+      DB_HOST: "db"
+      DB_USERNAME: "root"
+      DB_PASSWORD: "password"
+      DB_NAME: "pokemon"
+      DB_PORT: 3306
+    networks:
+      - app_network
+
+volumes:
+  my_db:
+
+networks:
+  app_network: {}
