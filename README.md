@@ -16,6 +16,34 @@ The following technologies are used in this project:
 - Python (BeautifulSoup4, FastAPI, MySQL connector, dotenv, pytest)
 - MySQL
 - Docker
+## Project Structure
+For this project, I'm using <a href="https://github.com/zhanymkanov/fastapi-best-practices#1-project-structure-consistent--predictable">this</a> project structure.
+```
+.
+├── Dockerfile
+├── README.md
+├── docker-compose.yml
+├── requirements.txt
+├── screenshots
+│   ├── api_docs.png
+│   └── test.png
+├── src
+│   ├── __init__.py
+│   ├── database.py
+│   ├── main.py
+│   └── pokemon
+│       ├── __init__.py
+│       ├── repository.py
+│       ├── route.py
+│       ├── schemas.py
+│       └── service.py
+└── tests
+    ├── __init__.py
+    └── pokemon
+        ├── __init__.py
+        └── test_pokemon.py
+```
+The repository file contains the database interaction. The service file contains the business logic. While the router files handle the routing of the API.
 ## API Documentation
 The API documentation can be accessed at `http://localhost:8001/docs`
 
