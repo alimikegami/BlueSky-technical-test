@@ -24,7 +24,11 @@ The API documentation can be accessed at `http://localhost:8001/docs`
 This project scrapes data from <a href="https://pokemondb.net/">pokemondb.net</a> using BeautifulSoup4. The scraping process serves as a database seeding mechanism for the API, which then serves Pokemon data from the local database.
 ## Tests
 ### Integration Tests
-The integration test written for this project cant be found in `tests` directory. To run the test, use the following command:
+The integration test written for this project can be found in `tests` directory. I have tested two cases for the get Pokemon endpoint:
+1. Successful retrieval of Pokemon data
+2. Empty records response when filtering by a non-existent Pokemon type
+
+To run the test, use the following command:
 ```
 pytest
 ```
